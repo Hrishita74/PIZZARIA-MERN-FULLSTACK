@@ -1,0 +1,16 @@
+.navbar {
+  height: 70px;
+}
+
+.navbar img {
+  cursor: pointer;
+}
+
+.navbar .btn {
+  margin-left: 8px;
+}
+
+.profile-icon {
+  border-radius: 50%;
+  margin-left: 10px;
+}

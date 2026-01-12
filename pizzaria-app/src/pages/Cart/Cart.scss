@@ -1,0 +1,36 @@
+.cart-page h2 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cart-info {
+  max-width: 65%;
+}
+
+.extras ul {
+  padding-left: 18px;
+  margin: 5px 0;
+}
+
+.cart-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.summary-box {
+  border: 2px solid #dc3545;
+  padding: 20px;
+  border-radius: 8px;
+  background: #fff;
+}

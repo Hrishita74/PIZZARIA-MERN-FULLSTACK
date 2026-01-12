@@ -1,0 +1,35 @@
+/* Order Pizza Page */
+
+.order-pizza {
+  h2 {
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+}
+
+/* Pizza Card */
+.pizza-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+
+  img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+}
+
+/* Modal backdrop fix (VERY IMPORTANT) */
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Extras list spacing */
+.form-check {
+  margin-bottom: 8px;
+}

@@ -1,0 +1,39 @@
+.build-pizza h2 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.ingredient-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.ingredient-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.ingredient-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.ingredient-card .name {
+  font-weight: 500;
+}
+
+.ingredient-card .price {
+  font-size: 14px;
+  color: #555;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+

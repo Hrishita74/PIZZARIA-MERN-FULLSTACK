@@ -1,0 +1,25 @@
+Main folder name : start with your <fullname>
+ 
+inside the above folder
+	a) pizzeriaapp - reactapp
+	b) pizzariaserver - nodejsproject/expressproject
+ 
+	c) DBNAME : PIZZARIADB
+	     collections: 
+		pizzas
+		ingredients
+		shoppingcart
+		users - optional
+ 
+Timelines for Project Simulation.
+ 
+	Day 1 & 2 : Create DB and Collections    - 2 hours
+		Create APIs to perform the following operations
+			i) Fetch all pizzas from pizzas collection.
+			ii)  Fetch all ingredients from ingredients collection.
+			iii) Insert an item to shopping cart collection
+			iv) Update quantity of an item in the shopping cart
+			v)  Delete an item from the shopping cart.
+			vi) Fetch all items from the shopping cart.
+	Day 3 & 4 : Create react app , screens and implement all functionalities. 
+	Day 5(first half) : debugging and Testing.  
