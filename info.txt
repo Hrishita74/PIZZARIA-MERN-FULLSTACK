@@ -1,3 +1,5 @@
+//PROJECT REQUIREMENTS
+
 Main folder name : start with your <fullname>
  
 inside the above folder
@@ -13,7 +15,7 @@ inside the above folder
  
 Timelines for Project Simulation.
  
-	Day 1 & 2 : Create DB and Collections    - 2 hours
+	Day 1 & 2 : Create DB and Collections    
 		Create APIs to perform the following operations
 			i) Fetch all pizzas from pizzas collection.
 			ii)  Fetch all ingredients from ingredients collection.
