@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 
 
 export default function Navbar() {
-  const { cartItems } = useCart();
+  const { cartItems,clearCart } = useCart();
   const navigate = useNavigate();
  const { isLoggedIn, username, logout } = useAuth();
 
@@ -104,6 +104,7 @@ export default function Navbar() {
         <button
           className="dropdown-item text-danger"
           onClick={() => {
+            clearCart();
             logout();
             navigate("/");
           }}
