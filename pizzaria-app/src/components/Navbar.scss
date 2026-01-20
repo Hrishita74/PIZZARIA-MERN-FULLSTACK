@@ -6,7 +6,7 @@
   background-color: #212529;
 }
 
-
+/* LOGO */
 .logo {
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@
   color: #fff;
 
   img {
-    height: 500px;   
+    height: 50px; 
     width: auto;
   }
 
@@ -26,21 +26,21 @@
   }
 }
 
-
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 
+/* BUTTONS */
 .nav-btn {
   padding: 8px 14px;
   border: 1px solid #fff;
   border-radius: 6px;
   color: #fff;
   background: transparent;
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none;
 
   &:hover {
@@ -49,35 +49,81 @@
   }
 }
 
+/* CART HOVER */
+.cart-hover-wrapper {
+  position: relative;
+  cursor: pointer;
+}
 
 .cart-btn {
-  position: relative;
   padding: 8px 16px;
   background-color: #ffc107;
   color: #000;
   font-weight: 600;
   border-radius: 6px;
-  text-decoration: none;
+  border: none;
+}
 
-  &:hover {
-    background-color: #e0a800;
-  }
+.cart-hover-preview {
+  display: none;
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 220px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+}
 
-  .cart-count {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: #000;
-    color: #fff;
-    font-size: 12px;
-    padding: 2px 6px;
+.cart-hover-wrapper:hover .cart-hover-preview {
+  display: block;
+}
+
+.cart-hover-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-hover-item:last-child {
+  border-bottom: none;
+}
+
+/* PROFILE */
+.profile-hover {
+  position: relative;
+  cursor: pointer;
+
+  img {
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
   }
 }
 
-.profile-icon img {
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;
-  cursor: pointer;
+.profile-preview {
+  display: none;
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: #fff;
+  padding: 10px;
+  width: 160px;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 1000;
+
+  p {
+    margin: 6px 0;
+    cursor: pointer;
+  }
 }
+
+.profile-hover:hover .profile-preview {
+  display: block;
+}
+

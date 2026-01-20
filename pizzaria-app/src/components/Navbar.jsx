@@ -3,121 +3,78 @@ import { useCart } from "../context/CartContext";
 import logo from "../assets/logo.jpeg";
 import profile from "../assets/profile.jpg";
 import { useAuth } from "../context/AuthContext";
-
+import "./Navbar.scss";
 
 export default function Navbar() {
-  const { cartItems,clearCart } = useCart();
+  const { cartItems, clearCart } = useCart();
+  const { isLoggedIn, username, logout } = useAuth();
   const navigate = useNavigate();
- const { isLoggedIn, username, logout } = useAuth();
-
-
 
   return (
-    <nav className="navbar navbar-dark bg-dark px-4">
+    <nav className="navbar-container">
       
       {/* LOGO */}
-      <div
-        className="d-flex align-items-center gap-2"
-        onClick={() => navigate("/")}
-        style={{ cursor: "pointer" }}
-      >
-        <img src={logo} height="60" /> 
-        <span className="text-warning fw-bold fs-5">
-          The ULTIMATE HEAVEN TO YOUR TASTEBUDS !
-        </span>
+      <div className="logo" onClick={() => navigate("/")}>
+        <img src={logo} alt="logo" />
+        <span><b>The ULTIMATE HEAVEN TO YOUR TASTEBUDS !</b></span>
       </div>
 
-      {/* order & build */}
-      <div className="d-flex align-items-center gap-2">
-        
-        <Link to="/order" className="btn btn-outline-light">
-          Order Pizza
-        </Link>
+      {/* RIGHT SIDE */}
+      <div className="navbar-right">
 
-        <Link to="/build" className="btn btn-outline-light">
-          Build Pizza
-        </Link>
+        <Link to="/order" className="nav-btn">Order Pizza</Link>
+        <Link to="/build" className="nav-btn">Build Pizza</Link>
 
-        {/* CART DROPDOWN */}
-        <div className="dropdown">
-          <button
-            className="btn btn-warning dropdown-toggle fw-semibold"
-            data-bs-toggle="dropdown"
-          >
-            Add to Cart ({cartItems.length})
+        {/* CART HOVER */}
+        <div
+          className="cart-hover-wrapper"
+          onClick={() => navigate("/cart")}
+        >
+          <button className="cart-btn">
+            VIEW CART ({cartItems.length})
           </button>
 
-          <ul className="dropdown-menu dropdown-menu-end p-2">
-            {cartItems.length === 0 && (
-              <li className="dropdown-item text-muted">
-                Cart is empty
-              </li>
+          <div className="cart-hover-preview">
+            {cartItems.length === 0 ? (
+              <p className="text-muted mb-0">Cart is empty</p>
+            ) : (
+              cartItems.map((item, index) => (
+                <div key={index} className="cart-hover-item">
+                  <span>{item.name}</span>
+                  <span>x{item.quantity}</span>
+                </div>
+              ))
             )}
-
-            {cartItems.map((i) => (
-              <li key={i._id} className="dropdown-item">
-                {i.name} x {i.quantity}
-              </li>
-            ))}
-
-            <li>
-              <Link
-                to="/cart"
-                className="dropdown-item text-center fw-bold"
-              >
-                View Cart
-              </Link>
-            </li>
-          </ul>
+          </div>
         </div>
 
         {/* PROFILE */}
-        <div className="dropdown">
-  <img
-    src={profile}
-    height="35"
-    className="rounded-circle dropdown-toggle"
-    data-bs-toggle="dropdown"
-    style={{ cursor: "pointer" }}
-  />
+        <div className="profile-hover">
+          <img src={profile} alt="profile" />
 
-  <ul className="dropdown-menu dropdown-menu-end">
-  {!isLoggedIn ? (
-    <>
-      <li>
-        <Link className="dropdown-item" to="/login">
-          Login
-        </Link>
-      </li>
-      <li>
-        <Link className="dropdown-item" to="/signup">
-          Signup
-        </Link>
-      </li>
-    </>
-  ) : (
-    <>
-      <li className="dropdown-item text-muted">
-        Logged in as <b>{username}</b>
-      </li>
-      <li>
-        <button
-          className="dropdown-item text-danger"
-          onClick={() => {
-            clearCart();
-            logout();
-            navigate("/");
-          }}
-        >
-          Logout
-        </button>
-      </li>
-    </>
-  )}
-</ul>
-
-</div>
-
+          <div className="profile-preview">
+            {!isLoggedIn ? (
+              <>
+                <p onClick={() => navigate("/login")}>Login</p>
+                <p onClick={() => navigate("/signup")}>Signup</p>
+              </>
+            ) : (
+              <>
+                <p className="text-muted">Hi, {username}</p>
+                <p
+                  className="text-danger"
+                  onClick={() => {
+                    clearCart();
+                    logout();
+                    navigate("/");
+                  }}
+                >
+                  Logout
+                </p>
+              </>
+            )}
+          </div>
+        </div>
 
       </div>
     </nav>
