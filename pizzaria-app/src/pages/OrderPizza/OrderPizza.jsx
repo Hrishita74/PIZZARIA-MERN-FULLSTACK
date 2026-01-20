@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import "./OrderPizza.scss";
 
 export default function OrderPizza() {
   const [pizzas, setPizzas] = useState([]);
   const [extras, setExtras] = useState([]);
-
+  const { isLoggedIn } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const [selectedPizza, setSelectedPizza] = useState(null);
   const [selectedExtras, setSelectedExtras] = useState([]);
@@ -15,7 +16,7 @@ export default function OrderPizza() {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
-  /* ================= FETCH DATA ================= */
+  /* FETCH DATA */
 
   useEffect(() => {
     axios
@@ -28,13 +29,13 @@ export default function OrderPizza() {
   axios
     .get("http://localhost:3002/api/ingredients")
     .then(res => {
-      console.log("INGREDIENTS RESPONSE:", res.data); // 👈 IMPORTANT
+      console.log("INGREDIENTS RESPONSE:", res.data); 
       setExtras(res.data);
     })
     .catch(err => console.error(err));
 }, []);
 
-  /* ================= HANDLERS ================= */
+  /* HANDLERS  */
 
   const openModal = (pizza) => {
     setSelectedPizza(pizza);
@@ -63,15 +64,15 @@ export default function OrderPizza() {
       name: selectedPizza.name,
       price: selectedPizza.price,
       quantity: 1,
-      extras: selectedExtras,        // 🔥 IMPORTANT
-      totalPrice: calculateTotal()   // 🔥 IMPORTANT
+      extras: selectedExtras,       
+      totalPrice: calculateTotal()   
     });
 
     setShowModal(false);
     navigate("/cart");
   };
 
-  /* ================= UI ================= */
+  /* UI */
 
   return (
     <div className="container mt-4 order-pizza">
@@ -89,17 +90,21 @@ export default function OrderPizza() {
 
               <button
                 className="btn btn-warning mt-auto"
-                onClick={() => openModal(pizza)}
+                onClick={() => {
+                      if (!isLoggedIn) {
+                        alert("Please login to add items to cart");
+                        navigate("/login");
+                      }
+                      openModal(pizza)}}
               >
                 Add to Cart
               </button>
-
-            </div>
+              </div>
           </div>
         ))}
       </div>
 
-      {/* ================= MODAL ================= */}
+      {/* MODAL */}
       {showModal && selectedPizza && (
         <div className="modal fade show d-block" tabIndex="-1">
           <div className="modal-dialog modal-lg">
